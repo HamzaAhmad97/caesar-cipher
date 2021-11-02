@@ -1,4 +1,14 @@
 def encrypt(text, key):
+    """
+    A funciton that accepts a message and a key and returns the message encrypted by shifting its letters based on the key.
+
+    Args:
+        text (str): A general string, the message.
+        key (int): The key or the amount of shift.
+
+    Returns:
+        str: The encrypted message.
+    """
     letters = [chr(n) for n in range(97, 123)]
     letters_shifted = [*letters]
     encrypted_msg = ""

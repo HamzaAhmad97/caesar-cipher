@@ -1,6 +1,7 @@
 import nltk
 import re
-from decrypt import decrypt
+from caesar_cipher.decrypt import decrypt
+#from decrypt import decrypt
 
 nltk.download('words', quiet=True)
 nltk.download('names', quiet=True)
@@ -12,9 +13,18 @@ name_list = [name.lower() for name in names.words()]
 
 all_words = word_list + name_list
 
-text = "Xi lph iwt qthi du ixbth, xi lph iwt ldghi du ixbth."
+text = "Ix fhw txe fofg of ndhrl, it nad tho hndrk of allkd."
 
 def crack(text):
+    """
+    A function that accepts a string or a message that is encrypted, and tried to decrypt the message without knowing the key.
+
+    Args:
+        text (str): The encrypted message.
+
+    Returns:
+        str: The decrypted message or and empty string if the message does not seem to be in real English.
+    """
     results = []
     top = (0,"")
     for k in range(1,27):
@@ -25,8 +35,8 @@ def crack(text):
         for word in re.findall(r'[a-zA-Z]+', result):
             known += 1 if word.lower() in all_words else 0
         percentage = known / num_of_words * 100
-        top= (percentage,result) if percentage >= top[0] else (top[0],top[1])
-    return top[1]
+        top= (percentage,result) if percentage >= top[0] and percentage >= 50 else top
+    return top[1] 
 
 if __name__ == "__main__":
     print(crack(text))
