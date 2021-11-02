@@ -6,10 +6,12 @@ authors = ["HamzaAhmad97 <h.radiahmad@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
+nltk = "^3.6.5"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
 black = {version = "^21.10b0", allow-prereleases = true}
+autopep8 = "^1.6.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
